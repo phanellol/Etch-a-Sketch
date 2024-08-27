@@ -1,0 +1,16 @@
+body {
+    margin: 0px;
+}
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.regularDiv {
+    display: flex;
+    flex-basis: 6%;
+    border: 1px solid black;
+    width: 25px;
+    height: 25px;
+}
