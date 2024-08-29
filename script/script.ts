@@ -33,14 +33,14 @@ function painting(event: MouseEvent) {
 }
 
 function creatingUserGrid() {
-    // const userGridValue = prompt("How many square do you want");
+    const userGridValue = parseInt(prompt("enter the grid size(only one value)"));
 
     for (let i = 0; i < 256; i++) {
-        let regularDiv = document.querySelector(".regularDiv");
-        container.removeChild(regularDiv);
+        let oldDiv = document.querySelector(".regularDiv");
+        container.removeChild(oldDiv);
     }
 
-    for (let i = 0; i < (256); i++) {
+    for (let i = 0; i < userGridValue; i++) {
         let regularDiv = document.createElement("div");
         regularDiv.classList.add(i.toString());
         regularDiv.classList.add("regularDiv");

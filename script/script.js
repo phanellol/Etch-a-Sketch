@@ -22,12 +22,12 @@ function painting(event) {
     currentDiv.setAttribute("style", "background: pink;");
 }
 function creatingUserGrid() {
-    // const userGridValue = prompt("How many square do you want");
+    var userGridValue = parseInt(prompt("enter the grid size(only one value)"));
     for (var i = 0; i < 256; i++) {
-        var regularDiv = document.querySelector(".regularDiv");
-        container.removeChild(regularDiv);
+        var oldDiv = document.querySelector(".regularDiv");
+        container.removeChild(oldDiv);
     }
-    for (var i = 0; i < (256); i++) {
+    for (var i = 0; i < userGridValue; i++) {
         var regularDiv = document.createElement("div");
         regularDiv.classList.add(i.toString());
         regularDiv.classList.add("regularDiv");
