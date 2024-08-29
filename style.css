@@ -5,6 +5,8 @@ body {
 #container {
     display: flex;
     flex-wrap: wrap;
+    width: 960px;
+    height: 420px;
 }
 
 .regularDiv {
@@ -13,4 +15,9 @@ body {
     border: 1px solid black;
     width: 25px;
     height: 25px;
+}
+
+.squareButton {
+    margin: 16px;
+    padding: 16px;
 }
