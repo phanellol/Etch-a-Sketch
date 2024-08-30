@@ -38,13 +38,16 @@ function creatingUserGrid() {
     if (userGridValue === null || isNaN(userGridValue)) {
         alert("Wrong! Enter a correct value");
     }
+    let multUserGridValue = Math.pow(userGridValue, 2);
+    console.log(multUserGridValue);
+
 
     for (let i = 0; i < divSelector.length; i++) {
         let oldDiv = document.querySelector(".regularDiv");
         container.removeChild(oldDiv);
     }
 
-    for (let i = 0; i < userGridValue; i++) {
+    for (let i = 0; i < multUserGridValue; i++) {
         let regularDiv = document.createElement("div");
         regularDiv.classList.add(i.toString());
         regularDiv.classList.add("regularDiv");
