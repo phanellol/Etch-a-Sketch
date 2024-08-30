@@ -23,7 +23,11 @@ function painting(event) {
 }
 function creatingUserGrid() {
     var userGridValue = parseInt(prompt("enter the grid size(only one value)"));
-    for (var i = 0; i < 256; i++) {
+    var divSelector = document.querySelectorAll(".regularDiv");
+    if (userGridValue === null || isNaN(userGridValue)) {
+        alert("Wrong! Enter a correct value");
+    }
+    for (var i = 0; i < divSelector.length; i++) {
         var oldDiv = document.querySelector(".regularDiv");
         container.removeChild(oldDiv);
     }

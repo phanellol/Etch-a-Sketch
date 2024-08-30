@@ -34,8 +34,12 @@ function painting(event: MouseEvent) {
 
 function creatingUserGrid() {
     const userGridValue = parseInt(prompt("enter the grid size(only one value)"));
+    const divSelector = document.querySelectorAll(".regularDiv");
+    if (userGridValue === null || isNaN(userGridValue)) {
+        alert("Wrong! Enter a correct value");
+    }
 
-    for (let i = 0; i < 256; i++) {
+    for (let i = 0; i < divSelector.length; i++) {
         let oldDiv = document.querySelector(".regularDiv");
         container.removeChild(oldDiv);
     }
