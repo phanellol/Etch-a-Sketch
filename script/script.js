@@ -5,31 +5,39 @@ userInputSquareButton.classList.add("squareButton");
 userInputSquareButton.textContent = "Create your grid";
 containerButton.appendChild(userInputSquareButton);
 userInputSquareButton.addEventListener("click", creatingUserGrid);
-for (var i = 0; i < (256); i++) {
-    var regularDiv = document.createElement("div");
-    regularDiv.classList.add(i.toString());
-    regularDiv.classList.add("regularDiv");
-    container.appendChild(regularDiv);
+function standartGridCreating() {
+    for (var i = 0; i < (256); i++) {
+        var regularDiv = document.createElement("div");
+        regularDiv.classList.add(i.toString());
+        regularDiv.classList.add("regularDiv");
+        container.appendChild(regularDiv);
+    }
 }
-var divHover = document.querySelectorAll(".regularDiv");
-var divHoverArray = Array.prototype.slice.call(divHover);
-var divDiv = document.querySelector(".regulardiv");
-for (var i = 0; i < divHover.length; i++) {
-    divHover.item(i).addEventListener("mouseover", painting);
+function hoverTracking() {
+    var allDivsSelection = document.querySelectorAll(".regularDiv");
+    for (var i = 0; i < allDivsSelection.length; i++) {
+        allDivsSelection.item(i).addEventListener("mouseover", painting);
+    }
 }
 function painting(event) {
     var currentDiv = event.target;
     currentDiv.setAttribute("style", "background: pink;");
 }
+standartGridCreating();
+hoverTracking();
 function creatingUserGrid() {
+    alert("Max value of grid is 40x40!");
     var userGridValue = parseInt(prompt("enter the grid size(only one value)"));
-    var divSelector = document.querySelectorAll(".regularDiv");
     if (userGridValue === null || isNaN(userGridValue)) {
         alert("Wrong! Enter a correct value");
     }
+    else if (userGridValue > 40) {
+        alert("Grid is too big! Look at this!");
+    }
     var multUserGridValue = Math.pow(userGridValue, 2);
     console.log(multUserGridValue);
-    for (var i = 0; i < divSelector.length; i++) {
+    var allDivsSelection = document.querySelectorAll(".regularDiv");
+    for (var i = 0; i < allDivsSelection.length; i++) {
         var oldDiv = document.querySelector(".regularDiv");
         container.removeChild(oldDiv);
     }
@@ -39,8 +47,5 @@ function creatingUserGrid() {
         regularDiv.classList.add("regularDiv");
         container.appendChild(regularDiv);
     }
-    var divHover = document.querySelectorAll(".regularDiv");
-    for (var i = 0; i < divHover.length; i++) {
-        divHover.item(i).addEventListener("mouseover", painting);
-    }
+    hoverTracking();
 }
