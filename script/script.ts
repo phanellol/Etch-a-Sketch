@@ -1,27 +1,46 @@
 const container = document.querySelector("#container");
 
-const containerButton = document.querySelector("#containerButton")
+const userGridCreatingButton = document.querySelector("#userGridCreatingButtonContainer");
+
+const removeGridContainer = document.querySelector(".removeBorderButton");
 
 const userInputSquareButton = document.createElement("button");
 userInputSquareButton.classList.add("squareButton");
 userInputSquareButton.textContent = "Create your grid";
-containerButton.appendChild(userInputSquareButton);
+userGridCreatingButton.appendChild(userInputSquareButton);
 userInputSquareButton.addEventListener("click", creatingUserGrid);
 
+
 function standartGridCreating() {
-    for (let i = 0; i < (256); i++) {
-        let regularDiv = document.createElement("div");
-        regularDiv.classList.add(i.toString());
-        regularDiv.classList.add("regularDiv");
-        container.appendChild(regularDiv);
+    const grid = document.createElement("div");
+    grid.classList.add("gridPlace");
+    container.appendChild(grid);
+
+    for (let i = 0; i < 16; i++) {
+        const row = document.createElement("div");
+        row.classList.add("row");
+        grid.appendChild(row);
+        for (let p = 0; p < 16; p++) {
+            const column = document.createElement("div");
+            column.classList.add("column");
+            row.appendChild(column);
+        }
     }
 }
 
-function hoverTracking() {
-    const allDivsSelection = document.querySelectorAll(".regularDiv");
-    for (let i = 0; i < allDivsSelection.length; i++) {
-        allDivsSelection.item(i).addEventListener("mouseover", painting);
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
+function hoverTracking() {
+    const allRowsSelection = document.querySelectorAll(".row");
+    const allColumnsSelection = document.querySelectorAll(".column")
+    const gridSelection = allRowsSelection.length * allColumnsSelection.length;
+    for (let i = 0; i < gridSelection; i++) {
+        allRowsSelection.item(i).addEventListener("mouseover", painting);
+        allColumnsSelection.item(i).addEventListener("mouseover", painting);
     }
 }
 
@@ -34,27 +53,32 @@ standartGridCreating();
 hoverTracking();
 
 function creatingUserGrid() {
-    alert("Max value of grid is 40x40!")
+    alert("Max value of grid is 100x100!")
     const userGridValue = parseInt(prompt("enter the grid size(only one value)"));
     if (userGridValue === null || isNaN(userGridValue)) {
         alert("Wrong! Enter a correct value");
-    } else if (userGridValue > 40) {
-        alert("Grid is too big! Look at this!")
-    }
-    let multUserGridValue = Math.pow(userGridValue, 2);
-    console.log(multUserGridValue);
+    } else if (userGridValue > 100) {
+        return alert("Too big! Try to create smaller grid");
+    } else {
+        let gridSelector = document.querySelector(".gridPlace")
+        container.removeChild(gridSelector);
 
-    const allDivsSelection = document.querySelectorAll(".regularDiv");
-    for (let i = 0; i < allDivsSelection.length; i++) {
-        let oldDiv = document.querySelector(".regularDiv");
-        container.removeChild(oldDiv);
+        const grid = document.createElement("div");
+        grid.classList.add("gridPlace");
+        container.appendChild(grid);
+
+        for (let x = 0; x < userGridValue; x++) {
+            const row = document.createElement("div");
+            row.classList.add("row");
+            grid.appendChild(row);
+            for (let y = 0; y < userGridValue; y++) {
+                const column = document.createElement("div");
+                column.classList.add("column");
+                row.appendChild(column);
+            }
+        }
+        hoverTracking();
     }
 
-    for (let i = 0; i < multUserGridValue; i++) {
-        let regularDiv = document.createElement("div");
-        regularDiv.classList.add(i.toString());
-        regularDiv.classList.add("regularDiv");
-        container.appendChild(regularDiv);
-    }
-    hoverTracking();
+
 }

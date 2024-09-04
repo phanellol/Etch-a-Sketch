@@ -1,22 +1,58 @@
 body {
     margin: 0px;
+    background-color: teal;
+}
+
+.bodyContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttonsContainer {
+    display: flex;
+}
+
+.removeBorderButton {
+    display: flex;
+    margin: 16px;
+    padding: 8px;
 }
 
 #container {
     display: flex;
     flex-wrap: wrap;
-    width: 960px;
-    height: 420px;
+    width: 80vh;
+    height: 80vh;
+    background-color: white;
 }
 
-.regularDiv {
+#userGridCreatingButtonContainer {
     display: flex;
-    flex: 1;
-    flex-basis: 6%;
-    border: 1px solid black;
+    margin: 16px;
+    padding: 8px;
 }
 
 .squareButton {
     margin: 16px;
     padding: 16px;
+    border: 3px solid pink;
+    color: pink;
+    background-color: teal;
+}
+
+.gridPlace {
+    width: 80vh;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-grow: 1;
+}
+
+.column {
+    flex-grow: 1;
 }
